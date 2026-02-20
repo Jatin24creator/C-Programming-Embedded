@@ -12,16 +12,15 @@ int main ()
 } 
 ***************************************** 
  
- Question:  Write a loop program to print 1 to 5 on one by one. 
+Question:  Write a loop program to print sum of 1 to 5. 
  
- Answer:  1 
-   2 
-   3 
-   4 
-   5 */
+ Answer:  15  */
    #include<stdio.h>
    int main(){
-     for (int i =1; i<6; i++){
-          printf("%d \n",i);
+     int i = 1, sum =0;
+     while(i!=6){ // run until the condition is met
+          sum  = i + sum; // sum = 1, 1+2, 2+3, 3+2 ..
+          i++;
      }
+     printf("%d", sum);
    }

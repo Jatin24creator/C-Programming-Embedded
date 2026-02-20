@@ -12,16 +12,19 @@ int main ()
 } 
 ***************************************** 
  
- Question:  Write a loop program to print 1 to 5 on one by one. 
+Question:  Write a loop program to print the sum of two-digit odd numbers, whose  
+   ten’s digit is 7. 
  
- Answer:  1 
-   2 
-   3 
-   4 
-   5 */
+ Answer:  375*/
    #include<stdio.h>
    int main(){
-     for (int i =1; i<6; i++){
-          printf("%d \n",i);
+     int i = 10,sum = 0;
+     while(i>9&&i<100){
+      if((i%2)!=0){
+        if((i/10)==7){
+            sum = sum +i;
+        }
+      } i++;
      }
+     printf("%d",sum);
    }
