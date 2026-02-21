@@ -20,3 +20,10 @@ Answer:
 Input : 123456   -  Output – 123456 
 Input : 96895439- Output – 76895439 
 Input : 675 – Output - 575*/
+#include<stdio.h>
+int main(){
+     int enteredNum;
+     printf("Enter the number: ");
+     scanf("%d",&enteredNum);
+   
+}
