@@ -23,27 +23,27 @@ int main(){
      int enteredNum,count =0,status;
      printf("Enter the number: ");
      scanf("%d",&enteredNum);
-     while(enteredNum/10!=0){      // 12346578 = 12345678/10 
-          
+     while(enteredNum>0){      // 12346578 = 12345678/10 
+         
           for (int i = 2; i<(enteredNum%10);i++){ //  8 
-               if ((enteredNum%10)%i ==0){ // 
+               if ((enteredNum%10)%i ==0){ // check divisibility
                     status =0;
                     break;
-               } else if(enteredNum%10 == 1){
-                    status =1;
                }
                else {
                     status = 1;
                }
-
           }
-          if(status == 1){
+            if (enteredNum%10 <2){
+               status = 0;
+          }
+             if(status == 1){
                count++;
-          }
+             }
           enteredNum = enteredNum/10; // 1234567
           // printf("%d",enteredNum); //for debugging while
+
+         
      }
      printf("%d",count);
-
-
 }
