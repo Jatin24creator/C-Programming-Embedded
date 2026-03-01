@@ -3,20 +3,23 @@ Assume 0 & 1 are not Prime.
 Answer : 4 */
 #include<Stdio.h>
 int main (){
-    int x,y =0,count=0;
-    printf("Enter the number: ");
-    scanf("%d",&x);
-    while(x>0){
-        
-        for(int i = 2;i<x;i++){
-            if(x%i != 0){
-            
+    int count = 0,x =0;
+    for (int i = 1; i <10; i++){ // run for each number
+        x =0;
+        for (int j = 1; j <i; j++) // check if divisible by any number
+        {
+            if(i%j == 0 && j !=1){ // if divisibile and number is not 1
+                x =0;
+                break;
+            } else if ( j!=1 && j!=0) { // not divisible and number is 1
+                x =1; //prime
             }
         }
-        if(y == 0){
+       
+        if(x==1){
+             printf("%d\n",i);
             count++;
         }
-        x = x/10;
     }
     printf("%d",count);
 }
