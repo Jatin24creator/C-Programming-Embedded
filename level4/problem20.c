@@ -4,12 +4,12 @@ Answer : 4 */
 #include <stdio.h>
 
 int main() {
-    int count = 0;
+    int count = 0; // sets  count as 0
 
     for (int i = 2; i < 10; i++) {  // Start from 2
         int isPrime = 1;           // Assume prime
 
-        for (int j = 2; j < i; j++) {
+        for (int j = 2; j < i; j++) { // only works for numbers less than number 
             if (i % j == 0) {      // If divisible
                 isPrime = 0;
                 break;

@@ -3,24 +3,21 @@ Answer : 21*/
 
 #include<Stdio.h>
 int main(){
-    int x,y =0 , count =0;
-    printf("Enter the number: ");
-    scanf("%d",&x);
-    while(x>0){
-        //printf("%d\n",x%100);
-        for (int i = 2; i<x%100; i++){
-            if((x%100)%i == 0 ){ 
-                y =0;
-                break;
-            }else{
-                y = 1;
-            }
+    int count = 0;
+    // two digit numbers 10 to 99
+    for (int i = 10; i< 100; i++){
+       int isPrime = 1;
+       for (int j =2 ; j<i; j++){
+        if(i%j ==0){
+            isPrime = 0;
+            break;
         }
-        x =x/10;
-        if(y==1 && x%100 != 0){
+       }
+       if(isPrime ==1){
+        printf("%d\n",i);
         count++;
+       }
     }
-    }
+    printf("Total number of prime numbers: %d",count);
     
-    printf("%d",count);
 }
