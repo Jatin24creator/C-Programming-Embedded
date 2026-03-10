@@ -46,7 +46,7 @@ Question:  Get a number from user and check whether the digits are in
     if(curr_digit>=prev_digit){
       result =0;
       break;
-    } else {
+    } else { 
       result =1;
     }
     prev_digit = curr_digit;
