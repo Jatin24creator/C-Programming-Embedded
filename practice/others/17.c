@@ -1,19 +1,25 @@
-// second smallest
-#include<Stdio.h>
+// Second Smallest element of array
+#include<stdio.h>
+int secondsmallest(int arr[],int length);
 int main(){
-    int arr[] = {12,23,24,325,46,64567,57};
-    int length = sizeof(arr)/sizeof(arr[0]);
-    int smallest = arr[0];
-    int second_smallest;
-    int i;
+    int arr[] = {124,567,657,567,8,52,4,8,94,1,654};
+    int length = sizeof(arr)/ sizeof(arr[0]);
 
-    for(i=0;i<length;i++){
-        second_smallest = smallest;
-        if(smallest>arr[i]){   // smallest is the array 
-            second_smallest = smallest;
-            smallest = arr[i]; // secondsmallest
+    int ss = secondsmallest(arr,length);
+    printf("%d", ss);
+}
+
+int secondsmallest(int arr[],int length){
+    int smallest = arr[0];
+    // find out the smallest
+    int i;
+    for(i = 0; i<length;i++){
+        if(arr[i]<smallest){
+            smallest = arr[i]; // set smallest to 
+        }
+        else if(smallest<secondsmallest && secondsmallest != smallest){
+            seo
         }
     }
-
-    printf("%d is the second smallest", second_smallest);
+    // make a second smallest variable
 }
