@@ -1,24 +1,14 @@
-// finding the frequency of the elements in an array
+// Find the largest element in an array
 #include<Stdio.h>
 int main(){
-    int arr[] = {12,12,42,42,53,35,5,35,35,53,67,76,76,76,67};
+    //without sorting
+    int arr[] = {12,234,124,545,3,6,5,76,58768,7,9679789,435346};
     int length = sizeof(arr)/sizeof(arr[0]);
-
-    // sort the array first
-
-    for(int i = 0;i<length; i++){
-        int temp = arr[i];
-    
-        for(int j = i+1; j<length;j++){
-            if(arr[i]>arr[j]){
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-
+    int largest = 0;
+    for (int i = 0; i<length;i++){
+        if(arr[i]>largest){
+            largest = arr[i];
         }
-       
-        //printf("%d\n",arr[i]);
     }
-
-    // now use a freq variable for the length of the array
+    printf("%d",largest);
 }
