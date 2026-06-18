@@ -12,8 +12,9 @@ the result will be displayed, showing who won the round along with the choices o
 #include<Stdio.h>
 #include<stdbool.h>
 #include<stdlib.h>
+#include<time.h>
 
-int computersturn(int n);
+int computersturn();
 void game();
 char humansturn();
 
@@ -31,9 +32,6 @@ void game(){
         printf("\n Select Any Option\n"
             "1 to start the game\n" 
             "0 to exit the game\n"
-            "\nRules: After the game begins,\n" 
-            "You'll be asked to choose:\n"
-            "R for Rock, P for Paper, S for Scissors\n"
             "\nEnter Your Choice:");
         scanf("%d",&choice); // bug fixed was using
         printf("\n");
@@ -47,6 +45,7 @@ void game(){
             case 1:
             printf("Game STARTED!\n");
             humansturn(); // calls for humans turn
+            srand(time(NULL));
             break; 
 
             default:
@@ -54,112 +53,50 @@ void game(){
         }
     }
 }
-
-int computersturn(int n){ // int n (humans choice)
-
-    int c =2;
-    int value = rand()%(c+1);
-
-
-    // logic 0 R, 1 P, 2 S;
-    // rock vs paper -> paper
-    // rock vs scissor -> rock
-    // paper vs scissor -> scissor
-    switch(value){
-                case 0: // Computer Chose Rock
-                if(n==0){ // rock - rock
-                    printf("\nComputer Chose ROCK and You Chose ROCK! It's A TIE\n" 
-                        "Press 1 to TRY AGAIN * to EXIT from Main Menu\n");
-                    int option;
-                    scanf("%d",&option);
-                    (option == 1)?humansturn():game(); 
-                } else if(n==1){ // rock - paper
-                     printf("\nComputer Chose ROCK and You Chose PAPER! YOU WON!!!!!!\n" 
-                        "Press 1 to TRY AGAIN * to EXIT from Main Menu\n");
-                    int option;
-                    scanf("%d",&option);
-                    (option == 1)?humansturn():game(); 
-                } else if(n ==2){
-                    printf("\nComputer Chose ROCK and You Chose SCISSORS! YOU LOST!!!!!!\n" 
-                        "Press 1 to TRY AGAIN * to EXIT from Main Menu\n");
-                    int option;
-                    scanf("%d",&option);
-                    (option == 1)?humansturn():game(); 
-                }
-                break;
-                case 1: // Computer Chose Paper
-                int choice_paper = 1;
-                 if(n==0){ // paper - rock
-                    printf("\nComputer Chose PAPER and You Chose ROCK! YOU LOST!!!!!!\n" 
-                        "Press 1 to TRY AGAIN * to EXIT from Main Menu\n");
-                    int option;
-                    scanf("%d",&option);
-                    (option == 1)?humansturn():game(); 
-                } else if(n==1){ // paper - paper
-                     printf("\nComputer Chose PAPER and You Chose PAPER! It's A TIE\n" 
-                        "Press 1 to TRY AGAIN * to EXIT from Main Menu\n");
-                    int option;
-                    scanf("%d",&option);
-                    (option == 1)?humansturn():game(); 
-                } else if(n ==2){ // paper - scissor
-                    printf("\nComputer Chose PAPER and You Chose SCISSORS! YOU WON!!!!!!\n" 
-                        "Press 1 to TRY AGAIN * to EXIT from Main Menu\n");
-                    int option;
-                    scanf("%d",&option);
-                    (option == 1)?humansturn():game(); 
-                }
-              
-                break;
-                case 2: // Computer Chose Scissors
-                int choice_scissor = 2;
-                 if(n==0){ // scissor - rock
-                    printf("\nComputer Chose SCISSOR and You Chose ROCK! YOU WON!!!!!!\n" 
-                        "Press 1 to TRY AGAIN * to EXIT from Main Menu\n");
-                    int option;
-                    scanf("%d",&option);
-                    (option == 1)?humansturn():game(); 
-                } else if(n==1){ // scissor - paper
-                     printf("\nComputer Chose SCISSOR and You Chose PAPER! YOU LOST!!!!!!\n" 
-                        "Press 1 to TRY AGAIN * to EXIT from Main Menu\n");
-                    int option;
-                    scanf("%d",&option);
-                    (option == 1)?humansturn():game(); 
-                } else if(n ==2){ // scissor - scissor
-                    printf("\nComputer Chose SCISSOR and You Chose SCISSOR! It's A TIE\n" 
-                        "Press 1 to TRY AGAIN * to EXIT from Main Menu\n");
-                    int option;
-                    scanf("%d",&option);
-                    (option == 1)?humansturn():game(); 
-                }
-                break;
-
-            }
+int computersturn(){
+    int CValue = rand()%3;
+    return CValue;
 }
 
 char humansturn(){
             char humansChoice;
-            printf("R for Rock, P for Paper, S for Scissors, * for Return to Main Menu\n"
+            int Cvalue;
+            printf("R for Rock, P for Paper, S for Scissors \n"
             "\nEnter Your Choice: ");
             scanf(" %c",&humansChoice);
             switch(humansChoice){
                 case 'R': // Human Chose Rock
-                int choice_rock = 0; // for Rock
                 printf("\nYou chose Rock! Wait for the computer's turn...\n");
-                computersturn(choice_rock);
+                Cvalue = computersturn(); // 0 is for rock as user's input
+                if(Cvalue == 0){
+                    printf("\n Computer Chose ROCK! It's a tie");
+                } else if(Cvalue ==1){
+                    printf("\n Computer Chose Paper! You Lose");
+                }else if(Cvalue ==2){
+                    printf("\n Computer Chose Scissors! You Won");
+                } 
                 break;
                 case 'P': // Human Chose Paper
-                int choice_paper = 1;
                 printf("\nYou chose Paper! Wait for the computer's turn...\n");
-                computersturn(choice_paper);
+                Cvalue = computersturn(); // 1 is for Paper as user's input
+                if(Cvalue == 0){
+                    printf("\n Computer Chose ROCK! You Won");
+                } else if(Cvalue ==1){
+                    printf("\n Computer Chose Paper! It's a tie");
+                }else if(Cvalue ==2){
+                    printf("\n Computer Chose Scissors! You Lose");
+                } 
                 break;
                 case 'S': // Human Chose Scissors
-                int choice_scissor = 2;
                 printf("\nYou chose Rock! Wait for the computer's turn...\n");
-                computersturn(choice_scissor);
-                break;
-
-                case '*': // Return to main menu
-                game();
+                Cvalue = computersturn(); // 2 is for Scissors
+                  if(Cvalue == 0){
+                    printf("\n Computer Chose ROCK! You Won");
+                } else if(Cvalue ==1){
+                    printf("\n Computer Chose Paper! You Lose");
+                }else if(Cvalue ==2){
+                    printf("\n Computer Chose Scissors! It's A Tie ");
+                }
                 break;
 
                 default:
