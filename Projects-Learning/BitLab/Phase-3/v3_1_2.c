@@ -49,6 +49,8 @@ int main(){
             }else if(strcmp(operation,"CLEAR")==0){
                 n = bitCLEAR(n,bit);
                 dec2bin(n);
+            }else{
+                printf("Invalid Command\n");
             }
             printf("\n");
         }else{
